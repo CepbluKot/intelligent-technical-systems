@@ -1,7 +1,7 @@
 Запуск 1-го задания: 
 
 ```
-docker pull awesomecosmonaut/intelligent_technical_systems
+sudo docker pull awesomecosmonaut/intelligent_technical_systems
 sudo docker run awesomecosmonaut/intelligent_technical_systems
 ```
 
