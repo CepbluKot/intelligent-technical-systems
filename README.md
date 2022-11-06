@@ -18,7 +18,7 @@ sudo docker run awesomecosmonaut/intelligent_technical_systems_classifier_demo
 mosquitto_sub -v -h localhost -p 1883 -t '#'
 ```
 
-Репозиторий на dockerhub: https://hub.docker.com/r/awesomecosmonaut/intelligent_technical_systems
+Репозиторий 1-го задания на dockerhub: https://hub.docker.com/r/awesomecosmonaut/intelligent_technical_systems
 
 
 Репозиторий c демонстрацией работы кассификатора на dockerhub: https://hub.docker.com/r/awesomecosmonaut/intelligent_technical_systems_classifier_demo
