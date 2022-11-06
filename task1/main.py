@@ -17,69 +17,74 @@ histogram_creation_times = []
 def generate_random_data(
     num_of_iterations, num_of_elements_to_generate
 ) -> typing.List[typing.List[int]]:
-    list_with_data_lists: typing.List[typing.List[int]] = []
+    try:
+        list_with_data_lists: typing.List[typing.List[int]] = []
 
-    for selected_list in range(0, num_of_iterations):
+        for selected_list in range(0, num_of_iterations):
 
-        insindexe_list = []
-        for element_index in range(0, num_of_elements_to_generate):
-            insindexe_list.append(random.randint(0, max_int))
+            insindexe_list = []
+            for element_index in range(0, num_of_elements_to_generate):
+                insindexe_list.append(random.randint(0, max_int))
 
-        list_with_data_lists.append(insindexe_list)
+            list_with_data_lists.append(insindexe_list)
 
-    return list_with_data_lists.copy()
+        return list_with_data_lists.copy()
+    except:
+        print("error - generate_random_data")
 
 
 def create_histogram(
     histogram_borders: typing.List[int], input_data: typing.List[int]
 ) -> typing.List[int]:
-    start_time = time.time()
+    try:
+        start_time = time.time()
 
-    output: typing.List[int] = [0 for num in range(0, 9)]
-    histogram_border_index = 0
-    input_data.sort()
+        output: typing.List[int] = [0 for num in range(0, 9)]
+        histogram_border_index = 0
+        input_data.sort()
 
-    occurences = 0
-    last_histogram_border_index = len(histogram_borders) - 1
+        occurences = 0
+        last_histogram_border_index = len(histogram_borders) - 1
 
-    index = 0
-    while index < len(input_data) - 1:
-        if input_data[index] < histogram_borders[histogram_border_index]:
-            occurences += 1
-            index += 1
+        index = 0
+        while index < len(input_data) - 1:
+            if input_data[index] < histogram_borders[histogram_border_index]:
+                occurences += 1
+                index += 1
 
-        elif (
-            histogram_border_index == last_histogram_border_index
-            and input_data[index] >= histogram_borders[histogram_border_index]
-        ):
-            output[histogram_border_index] = occurences
-
-            occurences += 1
-            index += 1
-            output[histogram_border_index] = occurences
-        else:
-            output[histogram_border_index] = occurences
-            histogram_border_index += 1
-            occurences = 0
-
-            while (
-                input_data[index] >= histogram_borders[histogram_border_index]
-                and not histogram_border_index == last_histogram_border_index
+            elif (
+                histogram_border_index == last_histogram_border_index
+                and input_data[index] >= histogram_borders[histogram_border_index]
             ):
+                output[histogram_border_index] = occurences
+
+                occurences += 1
+                index += 1
+                output[histogram_border_index] = occurences
+            else:
+                output[histogram_border_index] = occurences
                 histogram_border_index += 1
+                occurences = 0
 
-    output[histogram_border_index] = occurences
+                while (
+                    input_data[index] >= histogram_borders[histogram_border_index]
+                    and not histogram_border_index == last_histogram_border_index
+                ):
+                    histogram_border_index += 1
 
-    end_time = time.time()
+        output[histogram_border_index] = occurences
 
+        end_time = time.time()
 
-    # print('[test #', test_id,'] INPUT: ' , input_data)
-    # print('\n[test #', test_id,'] OUTPUT: ' , output)
+        # print('[test #', test_id,'] INPUT: ' , input_data)
+        # print('\n[test #', test_id,'] OUTPUT: ' , output)
 
-    # print('\n[test #', test_id,'] TIME: ' , end_time - start_time)
-    # print('\n')
+        # print('\n[test #', test_id,'] TIME: ' , end_time - start_time)
+        # print('\n')
 
-    return output.copy(), end_time - start_time
+        return output.copy(), end_time - start_time
+    except:
+        print("error - create_histogram")
 
 
 if __name__ == "__main__":
